@@ -1,0 +1,25 @@
+package com.contacts.cmd;
+
+import java.util.Scanner;
+
+public class Cmd {
+	Scanner keyboard = new Scanner(System.in);
+	String input = "";
+	public Cmd(){
+		while(!input.equalsIgnoreCase("stop")){
+			input = recieve("Enter a command: ");
+			switch(input){
+			case "add": send("Add user");
+			}
+		}
+	}
+	
+	public String recieve(String hint){
+		System.out.print(hint);
+		return keyboard.next();
+	}
+	
+	public void send(String hint){
+		System.out.print(hint);
+	}
+}

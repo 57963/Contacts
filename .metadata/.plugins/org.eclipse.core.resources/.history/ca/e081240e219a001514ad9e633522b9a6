@@ -1,0 +1,10 @@
+package com.contacts.init;
+
+public class Init {
+	public static final String version = "v0.0.1alpha";
+	public static void main(String[] args) {
+		System.out.println("Contacts " + version);
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.contacts.cmd;
+
+public class Cmd {
+
+}

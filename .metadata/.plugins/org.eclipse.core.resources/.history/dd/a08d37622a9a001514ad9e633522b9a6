@@ -1,0 +1,64 @@
+package com.contacts.cmd;
+
+import java.util.Scanner;
+
+import com.contacts.contact.Contact;
+import com.contacts.returns.Returns;
+
+public class Cmd {
+	private static Scanner keyboard = new Scanner(System.in);
+	private static String[] input = new String[1];
+	private static Contact contactRet;
+	public Cmd() {
+		
+	}
+	
+	public static Returns run(){
+		input = recieve("Enter a command: ").split(" ");
+		switch (input[0]) {
+		case "add":
+			try {
+				addContact(input[1]);
+			} catch (ArrayIndexOutOfBoundsException ex) {
+				send("Please specify a contact name.");
+				return Returns.CONTINUE;
+			}
+			return Returns.ADD;
+		case "stop":
+			return Returns.STOP;
+		case "view":
+			try {
+				viewContact(input[1]);
+			} catch (ArrayIndexOutOfBoundsException ex) {
+				send("Please specify a contact name.");
+				return Returns.CONTINUE;
+			}
+			return Returns.VIEW;
+		default:
+			send("Please enter a valid command.");
+		}
+		return Returns.CONTINUE;
+	}
+
+	public static String recieve(String hint) {
+		System.out.print(hint);
+		return keyboard.nextLine();
+	}
+
+	public static void send(String hint) {
+		System.out.println(hint);
+	}
+
+	public static void addContact(String name) {
+		send("adding contact " + name);
+		setContactRet(new Contact(name));
+	}
+
+	public Contact getContactRet() {
+		return contactRet;
+	}
+
+	public static void setContactRet(Contact contactReti) {
+		contactRet = contactReti;
+	}
+}

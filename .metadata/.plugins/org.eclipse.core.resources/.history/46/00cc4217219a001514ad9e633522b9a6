@@ -1,0 +1,13 @@
+package com.contacts.init;
+
+import com.contacts.cmd.Cmd;
+
+public class Init {
+	public static final String version = "v0.0.1alpha";
+	public Cmd cmd;
+	public static void main(String[] args) {
+		System.out.println("Contacts " + version);
+		Cmd cmd = new Cmd();
+	}
+
+}

@@ -1,0 +1,27 @@
+package com.contacts.cmd;
+
+import java.util.Scanner;
+
+public class Cmd {
+	Scanner keyboard = new Scanner(System.in);
+	String[] input = new String[1];
+	public Cmd(){
+		input[0] = "";
+		while(!input[0].equalsIgnoreCase("stop")){
+			input = recieve("Enter a command: ").split(" ");
+			switch(input[0]){
+			case "add": send("Add user"); break;
+			default: send("Please enter a valid command.");
+			}
+		}
+	}
+	
+	public String recieve(String hint){
+		System.out.print(hint);
+		return keyboard.next();
+	}
+	
+	public void send(String hint){
+		System.out.println(hint);
+	}
+}
