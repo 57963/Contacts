@@ -10,7 +10,8 @@ public class Init {
 	private static ContactList list;
 	private static Returns returned;
 	private static boolean run = true;
-	public static void main(String[] args) {
+	
+	public Init(){
 		System.out.println("Contacts " + version);
 		cmd = new Cmd();
 		list = new ContactList();
@@ -30,11 +31,25 @@ public class Init {
 				} else {
 					cmd.searchContactView(list.search(cmd.getNameRet()));
 				}
+				break;
+			case EDIT:
+				list.edit(Cmd.getEditRet(),Cmd.getEditArgs());
+				updateCmd();
+				break;
 			default:
 				break;
 			}
 			System.out.println("\\------------------------/");
 		}
+	}
+	
+	private void updateCmd() {
+		Cmd.setLastSearch(list.search(Cmd.getLastSearchReq()));
+	}
+
+	public static void main(String[] args) {
+		@SuppressWarnings("unused")
+		Init init = new Init();
 	}
 
 }

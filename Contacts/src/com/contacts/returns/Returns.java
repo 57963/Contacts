@@ -1,5 +1,5 @@
 package com.contacts.returns;
 
 public enum Returns {
-STOP,ADD,CONTINUE,VIEW,SEARCH
+STOP,ADD,CONTINUE,SEARCH,EDIT
 }
