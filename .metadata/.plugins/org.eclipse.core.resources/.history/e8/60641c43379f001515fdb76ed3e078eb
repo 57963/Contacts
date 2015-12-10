@@ -2,6 +2,7 @@ package com.contacts.meetingList;
 
 import java.util.ArrayList;
 
+import com.contacts.contact.Contact;
 import com.contacts.meeting.Meeting;
 
 public class MeetingList {

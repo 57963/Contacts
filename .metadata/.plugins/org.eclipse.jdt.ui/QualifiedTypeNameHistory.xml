@@ -8,4 +8,6 @@
 <fullyQualifiedTypeName name="com.contacts.contactList.ContactList"/>
 <fullyQualifiedTypeName name="com.contacts.contact.Contact"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.contacts.meeting.Meeting"/>
+<fullyQualifiedTypeName name="com.contacts.meetingList.MeetingList"/>
 </qualifiedTypeNameHistroy>

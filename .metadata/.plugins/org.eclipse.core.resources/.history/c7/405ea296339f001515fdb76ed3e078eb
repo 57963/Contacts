@@ -1,0 +1,13 @@
+package com.contacts.meetingList;
+
+import java.util.ArrayList;
+
+import com.contacts.meeting.Meeting;
+
+public class MeetingList {
+	private ArrayList <Meeting> list = new ArrayList<>();
+	public MeetingList(){
+		
+	}
+
+}
