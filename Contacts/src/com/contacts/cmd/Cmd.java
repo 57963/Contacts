@@ -136,7 +136,7 @@ public class Cmd {
 		Cmd.nameRet = nameRet;
 	}
 
-	public List<Contact> getLastSearch() {
+	public static List<Contact> getLastSearch() {
 		return lastSearch;
 	}
 

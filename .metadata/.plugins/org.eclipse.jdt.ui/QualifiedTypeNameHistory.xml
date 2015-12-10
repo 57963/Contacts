@@ -3,8 +3,9 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="com.contacts.cmd.Cmd"/>
 <fullyQualifiedTypeName name="com.contacts.returns.Returns"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.contacts.contactList.ContactList"/>
 <fullyQualifiedTypeName name="com.contacts.contact.Contact"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="com.contacts.contactList.ContactList"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

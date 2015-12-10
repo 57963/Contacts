@@ -1,0 +1,12 @@
+package com.contacts.contactList;
+
+import java.util.ArrayList;
+
+import com.contacts.contact.Contact;
+
+public class ContactList {
+	ArrayList <Contact> list = new ArrayList<>();
+	public ContactList(){
+		
+	}
+}

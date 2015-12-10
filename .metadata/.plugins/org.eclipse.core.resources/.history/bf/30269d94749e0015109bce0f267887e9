@@ -1,0 +1,29 @@
+package com.contacts.contact;
+
+public class Contact {
+	private String firstName = "";
+	private String surName = "";
+	private String number = "";
+	
+	public Contact(String name){
+		setFirstName(name);
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getSurName() {
+		return surName;
+	}
+	public void setSurName(String surName) {
+		this.surName = surName;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+}

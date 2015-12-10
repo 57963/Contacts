@@ -1,0 +1,50 @@
+package com.contacts.contact;
+
+public class Contact {
+	private String firstName = "";
+	private String surName = "";
+	private String number = "";
+	private String city = "";
+	private String[] callingCodes = {"Clitheroe","Bournemouth"};
+	
+	public Contact(){
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getSurName() {
+		return surName;
+	}
+	public void setSurName(String surName) {
+		this.surName = surName;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	public void setNumber(String number) {
+		number = number.replaceAll(" ", "");
+		boolean valid = true;
+		if(!number.startsWith("0")){
+			System.out.println("All UK numbers must start with 0, no changes have been made");
+			valid = false;
+		}
+		try{
+			setCity(callingCodes[Integer.parseInt(number.substring(2, 5))-200]);
+		} catch(Exception ex){
+			System.out.println("could not find city");
+		}
+		if(valid){
+			this.number = number;
+		}
+	}
+}

@@ -1,0 +1,45 @@
+package com.contacts.core;
+
+import java.util.ArrayList;
+
+import com.contacts.contact.Contact;
+import com.contacts.contactList.ContactList;
+
+public class Core {
+	ContactList list = new ContactList();
+	public static void main(String[] args){
+		@SuppressWarnings("unused")
+		Core core = new Core();
+	}
+	
+	public Core(){
+		addContact();
+		System.out.println(getContact(0).getFirstName());
+		editContact(0,"name","you");
+		System.out.println(getContact(0).getFirstName());
+		for(Contact c : searchContacts("you") ){
+			System.out.println(c.getFirstName());
+		}
+	}
+	
+	public void addContact(){
+		list.add(new Contact());
+	}
+	
+	public void removeContact(int index){
+		list.remove(index);
+	}
+	
+	public void editContact(int index, String attr, String newVal){
+		list.edit(index,attr,newVal);
+	}
+	
+	public Contact getContact(int index){
+		return list.get(index);
+	}
+	
+	public ArrayList<Contact> searchContacts (String... names){
+		return list.search(names);
+		
+	}
+}

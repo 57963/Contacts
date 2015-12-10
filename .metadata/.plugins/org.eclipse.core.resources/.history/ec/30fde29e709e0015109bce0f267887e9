@@ -1,0 +1,20 @@
+package com.contacts.core;
+
+import com.contacts.contact.Contact;
+import com.contacts.contactList.ContactList;
+
+public class Core {
+	ContactList list = new ContactList();
+	public static void main(String[] args){
+		Core core = new Core();
+		
+	}
+	
+	public Core(){
+		
+	}
+	
+	public void addContact(String name){
+		list.addList(new Contact(name));
+	}
+}

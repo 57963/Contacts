@@ -44,7 +44,10 @@ public class Init {
 	}
 	
 	private void updateCmd() {
+		System.out.println(Cmd.getLastSearch());
 		Cmd.setLastSearch(list.search(Cmd.getLastSearchReq()));
+		System.out.println(Cmd.getLastSearchReq());
+		System.out.println(list.getList().get(0).getFirstName());
 	}
 
 	public static void main(String[] args) {
