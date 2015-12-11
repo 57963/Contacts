@@ -6,7 +6,7 @@ import com.contacts.contactList.ContactList;
 import com.contacts.meetingList.MeetingList;
 
 public class Core {
-	ContactList contactList = new ContactList();
+	public ContactList contactList = new ContactList();
 	MeetingList meetingList = new MeetingList();
 	public static void main(String[] args){
 		@SuppressWarnings("unused")

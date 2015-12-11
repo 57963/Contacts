@@ -175,13 +175,13 @@ public class NewContactWindow {
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				core.list.add(new Contact());
-				core.list.getJustAdded().setFirstName(textFieldFirstName.getText());
-				core.list.getJustAdded().setSurName(textFieldSurname.getText());
-				core.list.getJustAdded().setHomeNumber(textFieldHomeNumber.getText());
-				core.list.getJustAdded().setMobileNumber(textFieldMobileNumber.getText());
-				core.list.getJustAdded().setCity(textFieldCity.getText());
-				core.printContact(core.list.getJustAdded());
+				core.contactList.add(new Contact());
+				core.contactList.getJustAdded().setFirstName(textFieldFirstName.getText());
+				core.contactList.getJustAdded().setSurName(textFieldSurname.getText());
+				core.contactList.getJustAdded().setHomeNumber(textFieldHomeNumber.getText());
+				core.contactList.getJustAdded().setMobileNumber(textFieldMobileNumber.getText());
+				core.contactList.getJustAdded().setCity(textFieldCity.getText());
+				core.printContact(core.contactList.getJustAdded());
 
 				
 				
