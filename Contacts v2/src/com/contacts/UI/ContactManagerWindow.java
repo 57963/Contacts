@@ -2,6 +2,7 @@ package com.contacts.UI;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JEditorPane;
 
@@ -57,6 +58,10 @@ public class ContactManagerWindow {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		frame.setTitle("Contact Manager ©2015 - Oliver Clark & Callum Gooding");
+		ImageIcon img = new ImageIcon("/Users/CompUser/workspace/Contacts/Contacts v2/src/contact-icon.png");
+		frame.setIconImage(img.getImage());
+		
 		
 		JButton btnNewMeeting = new JButton("New Meeting");
 		btnNewMeeting.addMouseListener(new MouseAdapter() {
@@ -107,6 +112,17 @@ public class ContactManagerWindow {
 			}
 		});
 		frame.getContentPane().add(btnNewContact);
+		
+		JButton btnEditContact = new JButton("Edit Contact");
+		btnEditContact.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				EditContactWindow EditContactWindow = new EditContactWindow(core);
+				EditContactWindow.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
+		frame.getContentPane().add(btnEditContact);
 	}
 	
 	public void setVisible(boolean b) {

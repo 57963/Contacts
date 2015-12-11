@@ -4,17 +4,21 @@ import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 
+import com.contacts.core.Core;
+
 import java.awt.GridBagConstraints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Insets;
 
-public class ViewPrevMeetingWindow {
+public class EditContactWindow {
 
 	private JFrame frame;
 
@@ -25,7 +29,7 @@ public class ViewPrevMeetingWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewPrevMeetingWindow window = new ViewPrevMeetingWindow();
+					EditContactWindow window = new EditContactWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,27 +41,29 @@ public class ViewPrevMeetingWindow {
 	/**
 	 * Create the application.
 	 */
-	public ViewPrevMeetingWindow() {
-		initialize();
+	public EditContactWindow(Core core) {
+		initialize(core);
+	}
+	public EditContactWindow() {
+		initialize(null);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		
+	private void initialize(Core core) {
 		ContactManagerWindow ContactManagerWindow = new ContactManagerWindow();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("View Previous Meeting");
+		frame.setTitle("Edit Contact");
 		ImageIcon img = new ImageIcon("/Users/CompUser/workspace/Contacts/Contacts v2/src/contact-icon.png");
 		frame.setIconImage(img.getImage());
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
 		JButton btnBack = new JButton("Back");
@@ -70,9 +76,17 @@ public class ViewPrevMeetingWindow {
 			}
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBack.gridx = 0;
 		gbc_btnBack.gridy = 0;
 		frame.getContentPane().add(btnBack, gbc_btnBack);
+		
+		JButton btnSave = new JButton("Save");
+		GridBagConstraints gbc_btnSave = new GridBagConstraints();
+		gbc_btnSave.insets = new Insets(0, 0, 0, 5);
+		gbc_btnSave.gridx = 0;
+		gbc_btnSave.gridy = 8;
+		frame.getContentPane().add(btnSave, gbc_btnSave);
 	}
 
 	public void setVisible(boolean b) {
