@@ -1,12 +1,7 @@
 package com.contacts.UI;
 
-import java.awt.EventQueue;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-
-import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
@@ -17,56 +12,47 @@ import java.awt.GridBagConstraints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Insets;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
 
 public class EditContactWindow {
-
+	Core core;
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EditContactWindow window = new EditContactWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public EditContactWindow(Core core) {
-		initialize(core);
-	}
-	public EditContactWindow() {
-		initialize(null);
+		this.core = core;
+		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Core core) {
+	private void initialize() {
 		ContactManagerWindow ContactManagerWindow = new ContactManagerWindow();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Edit Contact");
-		ImageIcon img = new ImageIcon("/Users/CompUser/workspace/Contacts/Contacts v2/src/contact-icon.png");
+		ImageIcon img = new ImageIcon("src/contact-icon.png");
 		frame.setIconImage(img.getImage());
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		frame.getContentPane().setLayout(gridBagLayout);
+		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{158, 55, 0, 0};
+		gbl_panel.rowHeights = new int[]{23, 0, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
 		
 		JButton btnBack = new JButton("Back");
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnBack.gridx = 0;
+		gbc_btnBack.gridy = 0;
+		panel.add(btnBack, gbc_btnBack);
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -75,18 +61,14 @@ public class EditContactWindow {
 				frame.setVisible(false);
 			}
 		});
-		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBack.gridx = 0;
-		gbc_btnBack.gridy = 0;
-		frame.getContentPane().add(btnBack, gbc_btnBack);
 		
 		JButton btnSave = new JButton("Save");
 		GridBagConstraints gbc_btnSave = new GridBagConstraints();
+		gbc_btnSave.anchor = GridBagConstraints.WEST;
 		gbc_btnSave.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSave.gridx = 0;
-		gbc_btnSave.gridy = 8;
-		frame.getContentPane().add(btnSave, gbc_btnSave);
+		gbc_btnSave.gridy = 1;
+		panel.add(btnSave, gbc_btnSave);
 	}
 
 	public void setVisible(boolean b) {

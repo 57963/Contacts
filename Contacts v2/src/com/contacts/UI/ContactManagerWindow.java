@@ -4,9 +4,6 @@ import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JEditorPane;
-
-import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 
@@ -26,7 +23,7 @@ public class ContactManagerWindow {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,28 +43,23 @@ public class ContactManagerWindow {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
-		
-		
-		
+
 		Core core = new Core();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		frame.setTitle("Contact Manager ©2015 - Oliver Clark & Callum Gooding");
-		ImageIcon img = new ImageIcon("/Users/CompUser/workspace/Contacts/Contacts v2/src/contact-icon.png");
+		ImageIcon img = new ImageIcon(
+				"src/contact-icon.png");
 		frame.setIconImage(img.getImage());
-		
-		
+
 		JButton btnNewMeeting = new JButton("New Meeting");
 		btnNewMeeting.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				NewMeetingWindow NewMeetingWindow = new NewMeetingWindow();
+				NewMeetingWindow NewMeetingWindow = new NewMeetingWindow(core);
 				NewMeetingWindow.setVisible(true);
 				frame.setVisible(false);
 			}
@@ -77,31 +69,32 @@ public class ContactManagerWindow {
 			}
 		});
 		frame.getContentPane().add(btnNewMeeting);
-		
+
 		JButton btnViewPrevMeeting = new JButton("View Previous Meeting");
 		btnViewPrevMeeting.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				ViewPrevMeetingWindow ViewPrevMeetingWindow = new ViewPrevMeetingWindow();
+				ViewPrevMeetingWindow ViewPrevMeetingWindow = new ViewPrevMeetingWindow(core);
 				ViewPrevMeetingWindow.setVisible(true);
 				frame.setVisible(false);
-				
+
 			}
 		});
 		frame.getContentPane().add(btnViewPrevMeeting);
-		
+
 		JButton btnSearchContacts = new JButton("Search Contacts");
 		btnSearchContacts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				SearchContactWindow SearchContactWindow = new SearchContactWindow(core);
-				
+				SearchContactWindow SearchContactWindow = new SearchContactWindow(
+						core);
+
 				SearchContactWindow.setVisible(true);
 				frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnSearchContacts);
-		
+
 		JButton btnNewContact = new JButton("New Contact");
 		btnNewContact.addMouseListener(new MouseAdapter() {
 			@Override
@@ -112,24 +105,25 @@ public class ContactManagerWindow {
 			}
 		});
 		frame.getContentPane().add(btnNewContact);
-		
+
 		JButton btnEditContact = new JButton("Edit Contact");
 		btnEditContact.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				EditContactWindow EditContactWindow = new EditContactWindow(core);
+				EditContactWindow EditContactWindow = new EditContactWindow(
+						core);
 				EditContactWindow.setVisible(true);
 				frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnEditContact);
 	}
-	
+
 	public void setVisible(boolean b) {
-		if (b){
+		if (b) {
 			frame.setVisible(true);
 		}
-		
+
 	}
 
 }

@@ -6,7 +6,6 @@ public class Contact {
 	private String homeNumber = "";
 	private String mobileNumber = "";
 	private String city = "";
-	private String[] callingCodes = {"Clitheroe","","Bournemouth","","Bolton","Boston","Colchester","Consett",};
 	
 	public Contact(){
 	}
@@ -33,11 +32,6 @@ public class Contact {
 		number = number.replaceAll(" ", "");
 		switch(number.substring(0, 2)){
 		case "01":
-			try{
-				setCity(callingCodes[Integer.parseInt(number.substring(2, 5))-200]);
-			} catch(Exception ex){
-				System.out.println("could not find city");
-			}
 			setHomeNumber(number);
 			break;
 		case "02": setMobileNumber(number);break;

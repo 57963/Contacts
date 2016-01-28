@@ -1,7 +1,6 @@
 package com.contacts.meetingList;
 
 import java.util.ArrayList;
-
 import com.contacts.meeting.Meeting;
 
 public class MeetingList {
@@ -16,10 +15,10 @@ public class MeetingList {
 	public void setList(ArrayList <Meeting> list) {
 		this.list = list;
 	}
-	public Meeting add(Meeting contact){
-		list.add(contact);
-		justAdded = contact;
-		return contact;
+	public Meeting add(Meeting meeting){
+		list.add(0,meeting);
+		justAdded = meeting;
+		return meeting;
 	}
 	
 	public void remove(int index){
@@ -28,6 +27,11 @@ public class MeetingList {
 
 	public void edit(int index, String attr, String newVal) {
 		switch(attr){
+		case "name":
+			list.get(index).setName(newVal);
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -37,15 +41,15 @@ public class MeetingList {
 
 	public ArrayList<Meeting> search(String... names) {
 		ArrayList<Meeting> out = new ArrayList<>();
-		ArrayList<Meeting> temp = list;
+		/*ArrayList<Meeting> temp = list;
 		for(Meeting m: temp){
 			for(String name:names){
-				/*if(m.getFirstName().equals(name)||m.getSurName().equals(name)){
+				if(m.getFirstName().equals(name)||m.getSurName().equals(name)){
 					out.add(m);
 					temp.set(temp.indexOf(m), null);
-				}*/
+				}
 			}
-		}
+		}*/
 		return out;
 	}
 
