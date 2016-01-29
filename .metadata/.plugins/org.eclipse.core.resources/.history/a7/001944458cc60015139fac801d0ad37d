@@ -1,0 +1,126 @@
+package com.contacts.IO;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+import com.contacts.meeting.Meeting;
+import com.contacts.meetingList.MeetingList;
+
+public class IO {
+	PrintWriter pWrite;
+	BufferedReader bReader;
+	private String key;
+	private Cryption cryption = new Cryption();
+	public IO(){
+		
+	}
+	
+	public void saveContacts(ContactList list, String loc, String key){
+		String toSave = "";
+		for(Contact c: list.getList()){
+			toSave += c.getFirstName() + ",";
+			toSave += c.getSurName() + ",";
+			toSave += c.getHomeNumber() + ",";
+			toSave += c.getMobileNumber() + ",";
+			toSave += c.getCity() + "%";
+		}
+		try {
+			pWrite = new PrintWriter(new FileWriter(loc,false));
+		} catch (Exception e) {
+			e.printStackTrace();
+			pWrite.close();
+		}
+		pWrite.print(cryption.encrypt(toSave,key));
+		pWrite.close();
+	}
+	
+	public void saveMeetings(ContactList contacts, MeetingList list, String loc, String key){
+		String toSave = "";
+		for(Meeting m: list.getList()){
+			toSave += m.getName() + ",";
+			toSave += contacts.getList().indexOf(m.getOwner()) + ",";
+			for(Contact c: m.getAdmins()){
+				toSave += contacts.getList().indexOf(c) + "@";
+			}
+			toSave = toSave.substring(0, toSave.length()-1);
+			toSave += ",";
+			for(Contact c: m.getMembers()){
+				toSave += contacts.getList().indexOf(c) + "@";
+			}
+			toSave = toSave.substring(0, toSave.length()-1);
+			toSave += ",";
+			toSave += m.getDateTime().toString() + "%";
+		}
+		try {
+			pWrite = new PrintWriter(new FileWriter(loc,false));
+		} catch (Exception e) {
+			e.printStackTrace();
+			pWrite.close();
+		}
+		pWrite.print(cryption.encrypt(toSave,key));
+		pWrite.close();
+	}
+	
+	public ContactList loadContacts(String loc, String key){
+		String toLoad = "";
+		ContactList out = new ContactList();
+		try {
+			bReader = new BufferedReader(new FileReader(loc));
+			toLoad = bReader.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		toLoad = cryption.decrypt(toLoad,key);
+		for(String s: toLoad.split("%")){
+			out.add(new Contact());
+			out.edit(0, "firstName", s.split(",")[0]);
+			out.edit(0, "surName", s.split(",")[1]);
+			out.edit(0, "number", s.split(",")[2]);
+			out.edit(0, "number", s.split(",")[3]);
+			out.edit(0, "city", s.split(",")[4]);
+		}
+		return out;
+	}
+	
+	public MeetingList loadMeetings(ContactList list, String loc, String key){
+		String toLoad = "";
+		MeetingList out = new MeetingList();
+		try {
+			bReader = new BufferedReader(new FileReader(loc));
+			toLoad = bReader.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		toLoad = cryption.decrypt(toLoad,key);
+		for(String s: toLoad.split("%")){
+			out.add(new Meeting(list.get(Integer.parseInt(s.split(",")[1]))));
+			out.edit(0, "name", s.split(",")[0]);
+			for(String s1: s.split(",")[3].split("@")){
+				out.getJustAdded().addMember(list.get(Integer.parseInt(s1)));
+			}
+			for(String s1: s.split(",")[2].split("@")){
+				out.getJustAdded().addAdmin(out.getJustAdded().getMembers().indexOf(list.get(Integer.parseInt(s1))));
+			}
+			out.edit(0, "date", s.split(",")[4]);
+		}
+		return out;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public Cryption getCryption() {
+		return cryption;
+	}
+
+	public void setCryption(Cryption cryption) {
+		this.cryption = cryption;
+	}
+}

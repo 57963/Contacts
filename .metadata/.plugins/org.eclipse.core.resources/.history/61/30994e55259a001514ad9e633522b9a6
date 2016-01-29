@@ -1,5 +1,0 @@
-package com.contacts.returns;
-
-public enum Returns {
-
-}

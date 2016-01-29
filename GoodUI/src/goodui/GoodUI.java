@@ -2,8 +2,8 @@ package goodui;
 
 import java.util.ArrayList;
 
-import com.contacts.contact.Contact;
-import com.contacts.core.Core;
+import com.contacts.Contact;
+import com.contacts.Core;
 
 import processing.core.PApplet;
 import processing.event.MouseEvent;

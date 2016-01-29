@@ -1,0 +1,24 @@
+package com.ui;
+
+import com.contacts.core.Core;
+
+import processing.core.PApplet;
+
+
+public class UI extends PApplet {
+	Core core;
+	public static void main(String _args[]) {
+		PApplet.main(new String[] { com.ui.UI.class.getName() });
+	}
+	
+	public void settings(){
+		size(1000,700);
+	}
+
+	public void setup() {
+		
+	}
+
+	public void draw() {
+	}
+}

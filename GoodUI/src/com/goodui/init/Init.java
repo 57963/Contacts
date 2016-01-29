@@ -1,6 +1,6 @@
 package com.goodui.init;
 
-import com.contacts.core.Core;
+import com.contacts.Core;
 
 import processing.core.*;
 

@@ -1,0 +1,109 @@
+package com.contacts;
+
+
+import com.contacts.meeting.Meeting;
+import com.contacts.meetingList.MeetingList;
+
+public class Core {
+	private Contact user = new Contact();
+	private ContactList contactList = new ContactList();
+	private MeetingList meetingList = new MeetingList();
+	private IO IO = new IO();
+	public static void main(String[] args){
+		@SuppressWarnings("unused")
+		Core core = new Core();
+	}
+	
+	public Core(){
+		populate(50);
+		meetingList.add(new Meeting(contactList.get(0)));
+		meetingList.getJustAdded().setName("name");
+		for(int i = 1; i<contactList.getList().size();i++){
+			meetingList.getJustAdded().addMember(contactList.get(i));
+			if(Math.random()<0.5){
+				meetingList.getJustAdded().addAdmin(i);
+			}
+		}
+	}
+	
+	public void populate(int count){
+		String [] firstNames = {"James","Mary","Joe","Jane","Andrew"};
+		String [] surNames = {"Smith","Bloggs","Doe"};
+		String [] numbers = {"200564758","202283940","206958473"};
+		for(int i = 0;i<count;i++){
+			contactList.add(new Contact());
+			contactList.edit(0,"firstName",firstNames[(int) (Math.random()*firstNames.length)]);
+			contactList.edit(0,"surName",surNames[(int) (Math.random()*surNames.length)]);
+			contactList.edit(0,"number","01"+numbers[(int) (Math.random()*numbers.length)]);
+			contactList.edit(0,"number","07"+numbers[(int) (Math.random()*numbers.length)]);
+		}
+	}
+	
+	public void printContact(Contact contact){
+		System.out.println("First Name: "+contact.getFirstName());
+		System.out.println("Surname: "+contact.getSurName());
+		System.out.println("Home Number: "+contact.getHomeNumber());
+		System.out.println("Mobile Number: "+contact.getMobileNumber());
+		System.out.println("City: "+contact.getCity());
+	}
+	
+	public void printContactList(ContactList list){
+		for(Contact c: list.getList()){
+			printContact(c);
+		}
+	}
+	
+	public void printMeeting(Meeting meeting){
+		System.out.println("Name: "+meeting.getName());
+		System.out.println("Owner: " + meeting.getOwner().getFirstName() + " " + meeting.getOwner().getSurName());
+		System.out.print("Admins: ");
+		for(Contact c:meeting.getAdmins()){
+			System.out.print(c.getFirstName() + " " + c.getSurName() + ", ");
+		}
+		System.out.println();
+		System.out.print("Members: ");
+		for(Contact c:meeting.getMembers()){
+			System.out.print(c.getFirstName() + " " + c.getSurName() + ", ");
+		}
+		System.out.println();
+		System.out.println("Date: "+meeting.getDateTime());
+	}
+	
+	public void printMeetingList(MeetingList list){
+		for(Meeting m:list.getList()){
+			printMeeting(m);
+		}
+	}
+
+	public MeetingList getMeetingList() {
+		return meetingList;
+	}
+
+	public void setMeetingList(MeetingList meetingList) {
+		this.meetingList = meetingList;
+	}
+
+	public ContactList getContactList() {
+		return contactList;
+	}
+
+	public void setContactList(ContactList contactList) {
+		this.contactList = contactList;
+	}
+
+	public IO getIO() {
+		return IO;
+	}
+
+	public void setIO(IO IO) {
+		this.IO = IO;
+	}
+
+	public Contact getUser() {
+		return user;
+	}
+
+	public void setUser(Contact user) {
+		this.user = user;
+	}
+}

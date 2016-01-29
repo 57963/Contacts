@@ -1,0 +1,22 @@
+package com.ui;
+
+import java.util.ArrayList;
+import com.contacts.*;
+import processing.core.PApplet;
+
+public class ContactDisplay{
+	float width;
+	float height;
+	PApplet main;
+	public ContactDisplay(float width, float height, ArrayList<Contact> list, PApplet main){
+		this.width = width;
+		this.height = height;
+		this.main = main;
+	}
+	
+	public void draw(){
+		main.noStroke();
+		main.fill(200);
+		main.rect(0,0,width,height);
+	}
+}

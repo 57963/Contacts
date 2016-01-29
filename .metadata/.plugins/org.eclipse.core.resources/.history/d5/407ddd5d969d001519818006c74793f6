@@ -1,7 +1,0 @@
-package com.contacts.contact;
-
-public abstract class Contact {
-	String firstName;
-	String surName;
-	String number;
-}
